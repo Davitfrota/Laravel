@@ -20,7 +20,15 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [EventeController::class, 'index']);
 Route::get('/events/create', [EventeController::class, 'create']);
-Route::get('/events', [EventeController::class, 'store']);
+Route::get('/events/{id}', [EventeController::class, 'show']);
+
+Route::post('/events', [EventeController::class, 'store']);
+
+
+
+
+
+
 
 Route::get('/contact', [ContactController::class, 'index']);
 

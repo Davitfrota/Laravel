@@ -46,7 +46,13 @@
 
             </nav>
         </header>
-        @yield('content')
+        <main>
+            @if (session('msg'))
+                <p class="msg">{{session('msg')}}</p>
+
+            @endif
+            @yield('content')
+        </main>
         <footer>
             <p>Davi Events &copy; 2020</p>
         </footer>
