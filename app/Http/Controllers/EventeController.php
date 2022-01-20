@@ -9,9 +9,23 @@ class EventeController extends Controller
 {
     public function index(){
 
-        $events = Event::All();
+        $search = request('search');
 
-        return view('welcome', ['events' => $events]);
+        if($search){
+
+            $events = Event::where(
+                [
+                    ['title','LIKE',"%{$search}%"]
+                ]
+                )->get();
+        }
+        else{
+             $events = Event::All();
+
+        }
+
+
+        return view('welcome', ['events' => $events,'search' => $search]);
     }
 
     public function show($id){
@@ -32,8 +46,10 @@ class EventeController extends Controller
 
         $event->title = $request->title;
         $event->city = $request->city;
+        $event->date = $request->date;
         $event->private = $request->private;
         $event->description = $request->description;
+        $event->items = $request->items;
 
         /*Image Upload*/
         if($request->hasFile('image') && $request->file('image')->isValid()) {

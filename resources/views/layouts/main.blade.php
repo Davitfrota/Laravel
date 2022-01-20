@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/img/ursodopicapau.ico" type="image/x-icon">
 
         <title>@yield('title')</title>
 
@@ -35,12 +36,31 @@
                         <li class="nav-item">
                             <a href="/events/create" class="nav-link">Criar eventos</a>
                         </li>
+                        @auth
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Entrar</a>
+                            <a href="/dashboard" class="nav-link">Meus Eventos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Cadastrar</a>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <a href="/logout"
+                                class="nav-link"
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();"
+                                    >
+                                Sair
+                            </a>
+                            </form>
                         </li>
+                        @endauth
+                        @guest
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link">Entrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link">Cadastrar</a>
+                        </li>
+                        @endguest
                     </ul>
                 </div>
 
