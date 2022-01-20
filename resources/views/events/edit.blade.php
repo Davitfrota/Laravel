@@ -17,9 +17,11 @@
         @csrf
         @method('PUT')
         <div class="form-group">
+            <div class="tamanho-img">
             <label for="image">Imagem do Evento:</label>
             <input type="file"  class="form-control-file" id="image" name="image">
             <img src="/img/events/{{$event->image}}" alt="{{$event->title}}" class="img-preview">
+            </div>
         </div>
         <div class="form-group">
             <label for="title">Evento:</label>

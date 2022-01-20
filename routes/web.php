@@ -19,23 +19,19 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ContactController;
 
 Route::get('/', [EventeController::class, 'index']);
-Route::get('/events/create', [EventeController::class, 'create']);
-Route::get('/events/{id}', [EventeController::class, 'show']);
+Route::get('/events/create', [EventeController::class, 'create'])->middleware('auth');
+Route::get('/events/{id}', [EventeController::class, 'show'])->middleware('auth');
+Route::post('/events', [EventeController::class, 'store'])->middleware('auth');
 
-Route::post('/events', [EventeController::class, 'store']);
-
-
-
-
-
-
-
-Route::get('/contact', [ContactController::class, 'index']);
-
-Route::get('/produtos', [ProductsController::class, 'search']);
+Route::get('/dashboard', [EventeController::class, 'dashboard'])->middleware('auth');
+Route::delete('/events/{id}', [EventeController::class, 'destroy'])->middleware('auth');
+Route::get('/events/edit/{id}', [EventeController::class, 'edit'])->middleware('auth');
+Route::put('/events/update/{id}', [EventeController::class, 'update'])->middleware('auth');
 
 
-Route::get('/produto/{id?}', [ProductIDController::class, 'index']);
+
+
+
 
 
 

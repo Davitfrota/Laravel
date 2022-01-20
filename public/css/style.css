@@ -270,9 +270,14 @@ header{
 /*Edit page*/
 
 .img-preview{
-    width:300px;
+    width:500px;
+    align-items:center;
     margin-top: 20px;
+}
 
+.tamanho-img{
+    align-items:center;
+    text-align:center;
 }
 
 @keyframes scaling{
