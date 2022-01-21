@@ -28,6 +28,9 @@ Route::delete('/events/{id}', [EventeController::class, 'destroy'])->middleware(
 Route::get('/events/edit/{id}', [EventeController::class, 'edit'])->middleware('auth');
 Route::put('/events/update/{id}', [EventeController::class, 'update'])->middleware('auth');
 
+Route::post('/events/join/{id}', [EventeController::class, 'joinEvent'])->middleware('auth');
+Route::delete('/events/leave/{id}', [EventeController::class, 'leaveEvent'])->middleware('auth');
+
 
 
 
